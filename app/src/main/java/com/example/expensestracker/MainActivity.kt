@@ -12,11 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val generalFragment = GeneralFragment()
+        val addExpenseFragment = AddExpenseFragment()
 
         supportFragmentManager.beginTransaction().add(
             R.id.main_container,
-            generalFragment,
-            "123"
+            addExpenseFragment,
+            ""
         ).commit()
     }
 }
