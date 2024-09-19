@@ -12,4 +12,12 @@
     <string name="month_title">Месяц</string>
 
     <string name="general_item_balance_amount_title">Всё время</string>
+
+    <string name="add_expense_title">Расход</string>
+    <string name="add_expense_date_title">Дата</string>
+    <string name="add_expense_time_title">Время</string>
+    <string name="add_expense_category_title">Категория</string>
+    <string name="add_expense_amount_title">Сумма</string>
+    <string name="add_expense_currency_title">Валюта</string>
+    <string name="add_expense_comment_title">Комментарий</string>
 </resources>
