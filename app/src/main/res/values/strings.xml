@@ -20,4 +20,10 @@
     <string name="add_expense_amount_title">Сумма</string>
     <string name="add_expense_currency_title">Валюта</string>
     <string name="add_expense_comment_title">Комментарий</string>
+
+    <string name="category_title">Категории</string>
+    <string name="category_new_category_hint">Новая категория</string>
+
+    <string name="category_menu_rename">Переименовать</string>
+    <string name="category_menu_delete">Удалить</string>
 </resources>
