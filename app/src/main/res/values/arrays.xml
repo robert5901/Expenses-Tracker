@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="transactions_periods">
+        <item>@string/transactions_period_day</item>
+        <item>@string/transactions_period_week</item>
+        <item>@string/transactions_period_month</item>
+        <item>@string/transactions_period_year</item>
+        <item>@string/transactions_period_period</item>
+        <item>@string/transactions_period_all_time</item>
+    </string-array>
+</resources>

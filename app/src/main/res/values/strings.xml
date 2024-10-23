@@ -26,4 +26,13 @@
 
     <string name="category_menu_rename">Переименовать</string>
     <string name="category_menu_delete">Удалить</string>
+
+    <string name="transactions_period_day">День</string>
+    <string name="transactions_period_week">Неделя</string>
+    <string name="transactions_period_month">Месяц</string>
+    <string name="transactions_period_year">Год</string>
+    <string name="transactions_period_period">Период</string>
+    <string name="transactions_period_all_time">Все время</string>
+
+    <string name="transactions_total_sum_title">Всего:</string>
 </resources>
