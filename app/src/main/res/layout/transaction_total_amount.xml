@@ -21,13 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:paddingVertical="6dp"
-        android:text="@string/transactions_total_sum_title"
+        android:text="@string/transactions_total_amount_title"
         android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.21_21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sum"
+        android:id="@+id/amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

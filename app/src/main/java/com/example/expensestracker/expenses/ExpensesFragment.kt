@@ -34,12 +34,12 @@ class ExpensesFragment : Fragment() {
         title.setText(firstItem, false)
 
         transactionPeriodView.setPeriod(TransactionPeriodType.DAY)
-        transactionTotalSumView.setTotalSum("245 686,84")
+        transactionTotalAmountView.setTotalAmount("245 686,84")
 
     }
 
     private fun configureListeners() {
-        binding.title.setOnItemClickListener { parent, view, position, id ->
+        binding.title.setOnItemClickListener { _, _, position, _ ->
             if (position == 5) {
                 binding.transactionPeriodView.isVisible = false
                 return@setOnItemClickListener

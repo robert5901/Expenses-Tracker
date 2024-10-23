@@ -34,5 +34,5 @@
     <string name="transactions_period_period">Период</string>
     <string name="transactions_period_all_time">Все время</string>
 
-    <string name="transactions_total_sum_title">Всего:</string>
+    <string name="transactions_total_amount_title">Всего:</string>
 </resources>
