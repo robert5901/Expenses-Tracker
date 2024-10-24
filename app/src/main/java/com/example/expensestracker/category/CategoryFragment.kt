@@ -26,10 +26,15 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRecycler()
+        initRecyclerView()
     }
 
-    private fun initRecycler() {
+    override fun onDestroyView() {
+        binding.recyclerView.adapter = null
+        super.onDestroyView()
+    }
+
+    private fun initRecyclerView() {
         binding.recyclerView.adapter = adapter
 
         adapter.onItemClickAction = { item ->
