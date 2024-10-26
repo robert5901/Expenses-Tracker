@@ -2,9 +2,9 @@ package com.example.expensestracker
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.expensestracker.category.CategoryFragment
-import com.example.expensestracker.databinding.ActivityMainBinding
+import com.example.expensestracker.categoryTransactions.CategoryTransactionsFragment
+import com.example.expensestracker.expenses.ExpensesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,11 +14,13 @@ class MainActivity : AppCompatActivity() {
 
         val generalFragment = GeneralFragment()
         val addExpenseFragment = AddExpenseFragment()
-        val сategoryFragment = CategoryFragment()
+        val categoryFragment = CategoryFragment()
+        val expensesFragment = ExpensesFragment()
+        val categoryTransactionsFragment = CategoryTransactionsFragment()
 
         supportFragmentManager.beginTransaction().add(
             R.id.main_container,
-            сategoryFragment,
+            categoryTransactionsFragment,
             ""
         ).commit()
     }
