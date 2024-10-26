@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.expensestracker.category.CategoryFragment
 import com.example.expensestracker.categoryTransactions.CategoryTransactionsFragment
 import com.example.expensestracker.expenses.ExpensesFragment
+import com.example.expensestracker.incomes.IncomesFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         val categoryFragment = CategoryFragment()
         val expensesFragment = ExpensesFragment()
         val categoryTransactionsFragment = CategoryTransactionsFragment()
+        val incomesFragment = IncomesFragment()
 
         supportFragmentManager.beginTransaction().add(
             R.id.main_container,
-            categoryTransactionsFragment,
+            incomesFragment,
             ""
         ).commit()
     }
