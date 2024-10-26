@@ -50,6 +50,7 @@ class TransactionsPeriodView @JvmOverloads constructor(
             dateTextView.isVisible = transactionPeriodType.isDateTextViewVisible
             startDateInputLayout.isVisible = transactionPeriodType.isStartEndDateInputLayoutVisible
             endDateInputLayout.isVisible = transactionPeriodType.isStartEndDateInputLayoutVisible
+            hyphen.isVisible = transactionPeriodType.isHyphenVisible
         }
     }
 

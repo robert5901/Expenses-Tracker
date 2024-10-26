@@ -35,3 +35,12 @@ val TransactionPeriodType.isStartEndDateInputLayoutVisible
         TransactionPeriodType.YEAR -> false
         TransactionPeriodType.PERIOD -> true
     }
+
+val TransactionPeriodType.isHyphenVisible
+    get() = when (this) {
+        TransactionPeriodType.DAY -> false
+        TransactionPeriodType.WEEK -> false
+        TransactionPeriodType.MONTH -> false
+        TransactionPeriodType.YEAR -> false
+        TransactionPeriodType.PERIOD -> true
+    }
