@@ -16,13 +16,6 @@ import java.util.Locale
 class TransactionsPeriodView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
-    private companion object {
-        private const val LOCALE = "ru"
-    }
-
-    private enum class ChangePeriodType {
-        PREVIOUS, NEXT
-    }
 
     private val binding by viewBinding(TransactionsPeriodBinding::bind)
     private var currentPickedDate = Date()
@@ -209,5 +202,13 @@ class TransactionsPeriodView @JvmOverloads constructor(
             calendar.get(Calendar.DAY_OF_MONTH)
         )
         datePickerDialog.show()
+    }
+
+    private companion object {
+        private const val LOCALE = "ru"
+    }
+
+    private enum class ChangePeriodType {
+        PREVIOUS, NEXT
     }
 }

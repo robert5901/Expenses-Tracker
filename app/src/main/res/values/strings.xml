@@ -27,6 +27,9 @@
     <string name="category_menu_rename">Переименовать</string>
     <string name="category_menu_delete">Удалить</string>
 
+    <string name="category_transaction_menu_delete">Удалить</string>
+    <string name="category_transaction_menu_change">Редактировать</string>
+
     <string name="transactions_period_day">День</string>
     <string name="transactions_period_week">Неделя</string>
     <string name="transactions_period_month">Месяц</string>
