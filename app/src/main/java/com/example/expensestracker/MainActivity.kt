@@ -6,6 +6,7 @@ import com.example.expensestracker.category.CategoryFragment
 import com.example.expensestracker.categoryTransactions.CategoryTransactionsFragment
 import com.example.expensestracker.expenses.ExpensesFragment
 import com.example.expensestracker.incomes.IncomesFragment
+import com.example.expensestracker.pieChart.PieChartFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +20,11 @@ class MainActivity : AppCompatActivity() {
         val expensesFragment = ExpensesFragment()
         val categoryTransactionsFragment = CategoryTransactionsFragment()
         val incomesFragment = IncomesFragment()
+        val pieChartFragment = PieChartFragment()
 
         supportFragmentManager.beginTransaction().add(
             R.id.main_container,
-            incomesFragment,
+            pieChartFragment,
             ""
         ).commit()
     }

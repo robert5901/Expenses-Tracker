@@ -39,4 +39,8 @@
     <string name="transactions_period_hyphen">—</string>
 
     <string name="transactions_total_amount_title">Всего:</string>
+
+    <string name="pie_chart_title">Диаграмма</string>
+    <string name="pie_chart_finance_category_expenses">Расходы</string>
+    <string name="pie_chart_finance_category_incomes">Доходы</string>
 </resources>
