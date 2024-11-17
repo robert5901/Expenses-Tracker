@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Expenses tracker"
 include(":app")
- 
+include(":core_api")
+include(":core_impl")
+include(":core")

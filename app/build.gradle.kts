@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -81,4 +82,10 @@ dependencies {
     // material
     implementation (libs.material3)
     implementation (libs.material)
+
+    implementation(libs.dagger)
+    kapt (libs.dagger.compiler)
+
+    implementation(project(":core_api"))
+    implementation(project(":core"))
 }
