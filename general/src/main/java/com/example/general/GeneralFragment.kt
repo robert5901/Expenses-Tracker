@@ -1,4 +1,4 @@
-package com.example.expensestracker
+package com.example.general
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.example.expensestracker.databinding.FragmentGeneralBinding
-import views.GeneralItemViewType
-import views.model.Expenses
+import com.example.general.databinding.FragmentGeneralBinding
+import com.example.general.domain.models.Expenses
+import com.example.general.views.GeneralItemViewType
 
 class GeneralFragment : Fragment() {
 

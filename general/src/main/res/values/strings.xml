@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="general_item_expenses_title">Расходы</string>
+    <string name="general_item_incomes_title">Доходы</string>
+    <string name="general_item_balance_title">Баланс</string>
+    <string name="general_item_expenses_button_title">Все расходы</string>
+    <string name="general_item_incomes_button_title">Все доходы</string>
+
+    <string name="today_title">Сегодня</string>
+    <string name="week_title">Неделя</string>
+    <string name="month_title">Месяц</string>
+
+    <string name="general_item_balance_amount_title">Всё время</string>
+</resources>

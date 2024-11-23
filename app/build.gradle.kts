@@ -88,4 +88,6 @@ dependencies {
 
     implementation(project(":core_api"))
     implementation(project(":core"))
+    implementation(project(":main"))
+    implementation(project(":general"))
 }
