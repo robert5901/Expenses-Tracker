@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/toolbar_barrier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="back"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/toolbar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_barrier"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toTopOf="@id/toolbar_barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+        app:layout_constraintBottom_toBottomOf="@id/back"
+        app:layout_constraintStart_toEndOf="@id/back"
+        app:layout_constraintTop_toTopOf="@id/back"
+        tools:text="@string/add_expense_title" />
+
+    <ImageButton
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@id/comment_inputLayout"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_barrier"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.ExpensesTracker.RoundedCorners.6" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/date_inputLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_date_title"
+        android:textColorHint="@color/white"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down"
+        app:endIconMode="custom"
+        app:endIconTint="@color/white"
+        app:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toStartOf="@id/time_inputLayout"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toTopOf="@id/background">
+
+        <AutoCompleteTextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/time_inputLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_time_title"
+        android:textColorHint="@color/white"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down"
+        app:endIconMode="custom"
+        app:endIconTint="@color/white"
+        app:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toEndOf="@id/background"
+        app:layout_constraintStart_toEndOf="@id/date_inputLayout"
+        app:layout_constraintTop_toTopOf="@id/background"
+        app:layout_constraintWidth_percent="0.35">
+
+        <AutoCompleteTextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/category_inputLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_category_title"
+        android:textColorHint="@color/white"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down"
+        app:endIconMode="custom"
+        app:endIconTint="@color/white"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toEndOf="@id/background"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toBottomOf="@id/date_inputLayout">
+
+        <AutoCompleteTextView
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/amount_inputLayout"
+        style="@style/Widget.ExpensesTracker.TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_amount_title"
+        app:boxStrokeWidth="0.5dp"
+        android:textColorHint="@color/white"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toStartOf="@id/currency_inputLayout"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toBottomOf="@id/category_inputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="23dp"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/currency_inputLayout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_currency_title"
+        android:textColorHint="@color/white"
+        app:endIconDrawable="@drawable/ic_arrow_drop_down"
+        app:endIconMode="custom"
+        app:endIconTint="@color/white"
+        app:expandedHintEnabled="false"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toEndOf="@id/background"
+        app:layout_constraintStart_toEndOf="@id/amount_inputLayout"
+        app:layout_constraintTop_toBottomOf="@id/category_inputLayout"
+        app:layout_constraintWidth_percent="0.35">
+
+        <AutoCompleteTextView
+            android:id="@+id/currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/comment_inputLayout"
+        style="@style/Widget.ExpensesTracker.TextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_expense_comment_title"
+        android:textColorHint="@color/white"
+        app:boxStrokeWidth="0dp"
+        app:hintTextAppearance="@style/TextAppearance.ExpensesTracker.Small.12_15"
+        app:layout_constraintEnd_toEndOf="@id/background"
+        app:layout_constraintStart_toStartOf="@id/background"
+        app:layout_constraintTop_toBottomOf="@id/amount_inputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary"
+            android:cursorVisible="false"
+            android:inputType="text"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="23dp"
+            android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

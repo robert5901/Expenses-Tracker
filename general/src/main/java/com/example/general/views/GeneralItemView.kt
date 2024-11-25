@@ -15,9 +15,14 @@ class GeneralItemView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs) {
 
     private val binding by viewBinding(GeneralItemBinding::bind)
+    var onClick: (() -> Unit)? = null
 
     init {
         inflate(context, R.layout.general_item, this)
+
+        binding.button.setOnClickListener {
+            onClick?.invoke()
+        }
     }
 
     fun setItem(

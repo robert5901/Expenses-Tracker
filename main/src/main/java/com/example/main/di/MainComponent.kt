@@ -5,7 +5,6 @@ import com.example.main.MainActivity
 import dagger.Component
 
 @Component(
-    modules = [MainModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface MainComponent {
