@@ -1,9 +1,9 @@
 package com.example.expensestracker.di
 
+import com.example.add_transaction.navigation.AddTransactionScreenNavigatorImpl
+import com.example.core_api.mediators.AddTransactionScreenNavigator
 import com.example.core_api.mediators.GeneralScreenNavigator
-import com.example.core_api.mediators.MainNavigator
 import com.example.general.navigation.GeneralScreenNavigatorImpl
-import com.example.main.navigation.MainNavigatorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable
@@ -13,9 +13,13 @@ interface MediatorsBindings {
 
     @Binds
     @Reusable
-    fun bindsMainMediator(mainMediatorImpl: MainNavigatorImpl): MainNavigator
+    fun bindsGeneralMediator(
+        generalMediatorImpl: GeneralScreenNavigatorImpl
+    ): GeneralScreenNavigator
 
     @Binds
     @Reusable
-    fun bindsGeneralMediator(generalMediatorImpl: GeneralScreenNavigatorImpl): GeneralScreenNavigator
+    fun bindsAddTransactionMediator(
+        addTransactionMediatorImpl: AddTransactionScreenNavigatorImpl
+    ): AddTransactionScreenNavigator
 }

@@ -6,6 +6,7 @@ import com.example.core_api.mediators.ExpensesTrackerApp
 import com.example.core_api.mediators.GeneralScreenNavigator
 import com.example.main.di.MainComponent
 import javax.inject.Inject
+import com.example.core_api.R as core_R
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(core_R.layout.activity_main)
 
         MainComponent.create((application as ExpensesTrackerApp).getFacade()).inject(this)
 
         generalScreenNavigator.startGeneralScreen(
-            R.id.main_container,
+            core_R.id.main_container,
             supportFragmentManager
         )
 
