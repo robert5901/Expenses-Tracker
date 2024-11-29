@@ -91,4 +91,5 @@ dependencies {
     implementation(project(":main"))
     implementation(project(":general"))
     implementation(project(":add_transaction"))
+    implementation(project(":transactions"))
 }

@@ -5,4 +5,6 @@ interface MediatorsProvider {
     fun provideGeneralMediator(): GeneralScreenNavigator
 
     fun provideAddTransactionMediator(): AddTransactionScreenNavigator
+
+    fun provideTransactionsMediator(): TransactionsScreenNavigator
 }
