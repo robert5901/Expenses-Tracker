@@ -2,9 +2,8 @@ package com.example.add_transaction.navigation
 
 import androidx.fragment.app.FragmentManager
 import com.example.add_transaction.AddTransactionFragment
-import com.example.ui_atoms.R
-
 import com.example.core_api.mediators.AddTransactionScreenNavigator
+import com.example.ui_atoms.R
 import javax.inject.Inject
 
 class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionScreenNavigator {

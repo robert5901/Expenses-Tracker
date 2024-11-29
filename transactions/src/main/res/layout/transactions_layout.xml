@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background"
-    tools:context=".expenses.ExpensesFragment">
+    android:background="@color/app_background">
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/toolbar_barrier"
@@ -77,13 +76,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.expensestracker.expenses.views.TransactionsPeriodView
+    <com.example.transactions.views.TransactionsPeriodView
         android:id="@+id/transaction_period_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar_barrier" />
 
-    <com.example.expensestracker.expenses.views.TransactionTotalAmountView
+    <com.example.transactions.views.TransactionTotalAmountView
         android:id="@+id/transaction_total_amount_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

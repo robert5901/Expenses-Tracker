@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.core_api.mediators.AddTransactionScreenNavigator
 import com.example.core_api.mediators.ExpensesTrackerApp
+import com.example.core_api.mediators.TransactionsScreenNavigator
 import com.example.general.databinding.FragmentGeneralBinding
 import com.example.general.di.GeneralComponent
 import com.example.general.domain.models.Expenses
@@ -21,7 +22,17 @@ class GeneralFragment : Fragment() {
     @Inject
     lateinit var addTransactionScreenNavigator: AddTransactionScreenNavigator
 
+    @Inject
+    lateinit var transactionsScreenNavigator: TransactionsScreenNavigator
+
     private val binding by viewBinding(FragmentGeneralBinding::bind)
+
+    private val transactionsListener: (View) -> Unit = {
+        transactionsScreenNavigator.startTransactionScreen(
+            core_R.id.main_container,
+            parentFragmentManager
+        )
+    }
 
     override fun onAttach(context: Context) {
         GeneralComponent.create(
@@ -49,18 +60,26 @@ class GeneralFragment : Fragment() {
 
             expenses.onClick = {
                 // TODO open AddTransactionFragment and pass Expenses enum
-                addTransactionScreenNavigator.startAddTransactionScreen(
-                    core_R.id.main_container,
-                    parentFragmentManager
-                )
+                openTransactionScreen()
             }
             incomes.onClick = {
                 // TODO open AddTransactionFragment and pass Incomes enum
+                openTransactionScreen()
             }
             balance.onClick = {
                 // TODO open BalanceFragment
             }
+
+            expensesButton.setOnClickListener(transactionsListener)
+            incomesButton.setOnClickListener(transactionsListener)
         }
+    }
+
+    private fun openTransactionScreen() {
+        addTransactionScreenNavigator.startAddTransactionScreen(
+            core_R.id.main_container,
+            parentFragmentManager
+        )
     }
 
     // TODO test data
