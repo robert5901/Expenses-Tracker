@@ -6,12 +6,16 @@ import androidx.room.TypeConverters
 import com.example.core_api.database.ExpensesDatabaseContract
 import com.example.core_api.dto.DateConverter
 import com.example.core_api.dto.Expense
+import com.example.core_api.dto.ExpenseCategory
 import com.example.core_api.dto.Income
+import com.example.core_api.dto.IncomeCategory
 
 @Database(
     entities = [
         Expense::class,
-        Income::class
+        Income::class,
+        ExpenseCategory::class,
+        IncomeCategory::class
     ],
     version = 1
 )
