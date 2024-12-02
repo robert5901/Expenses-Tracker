@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Update
-import com.example.core_api.dto.ExpenseCategory
+import com.example.core_api.entity.ExpenseCategory
 
 @Dao
 interface ExpenseCategoryDao {

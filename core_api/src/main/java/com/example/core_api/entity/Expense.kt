@@ -1,27 +1,29 @@
-package com.example.core_api.dto
+package com.example.core_api.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.example.core_api.database.dao.ExpensesDao
 import java.util.Date
-import kotlin.math.atan
 
 @Entity(
-    tableName = "INCOMES",
+    tableName = ExpensesDao.TABLE_NAME,
     foreignKeys = [
         ForeignKey(
-            entity = IncomeCategory::class,
+            entity = ExpenseCategory::class,
             parentColumns = arrayOf("categoryId"),
-            childColumns = arrayOf("id"),
+            childColumns = arrayOf("categoryId"),
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
-class Income (
+data class Expense(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
+    @ColumnInfo
     val date: Date,
-    val category: String,
+    val categoryId: Long,
     val amount: Double,
     val currency: String,
     val comment: String
