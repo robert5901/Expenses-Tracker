@@ -37,7 +37,7 @@
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/colorPrimary"
         android:padding="5dp"
-        android:src="@drawable/ic_general_item_add"
+        android:src="@drawable/ic_add"
         app:layout_constraintBottom_toBottomOf="@id/background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/background"

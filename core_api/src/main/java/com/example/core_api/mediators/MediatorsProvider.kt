@@ -7,4 +7,6 @@ interface MediatorsProvider {
     fun provideAddTransactionMediator(): AddTransactionScreenNavigator
 
     fun provideTransactionsMediator(): TransactionsScreenNavigator
+
+    fun provideCategoriesMediator(): CategoryScreenNavigator
 }

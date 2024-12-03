@@ -5,5 +5,7 @@ import androidx.fragment.app.FragmentManager
 
 interface AddTransactionScreenNavigator {
 
-    fun startAddTransactionScreen(@IdRes containerId: Int, fragmentManager: FragmentManager)
+    fun startAddExpenseScreen(@IdRes containerId: Int, fragmentManager: FragmentManager)
+
+    fun startAddIncomeScreen(@IdRes containerId: Int, fragmentManager: FragmentManager)
 }

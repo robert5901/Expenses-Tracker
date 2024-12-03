@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionScreenNavigator {
 
-    override fun startAddTransactionScreen(containerId: Int, fragmentManager: FragmentManager) {
+    override fun startAddExpenseScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
             .setCustomAnimations(
                 R.anim.slide_in_right,
@@ -16,8 +16,31 @@ class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionSc
                 R.anim.slide_in_left,
                 R.anim.slide_out_right,
             )
-            .add(containerId, AddTransactionFragment())
-            .addToBackStack("AddTransactionScreen")
+            .add(
+                containerId,
+                AddTransactionFragment.newInstance(
+                    AddTransactionFragment.AddTransactionType.EXPENSES
+                )
+            )
+            .addToBackStack("AddExpenseScreen")
+            .commit()
+    }
+
+    override fun startAddIncomeScreen(containerId: Int, fragmentManager: FragmentManager) {
+        fragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.slide_in_right,
+                R.anim.slide_out_left,
+                R.anim.slide_in_left,
+                R.anim.slide_out_right,
+            )
+            .add(
+                containerId,
+                AddTransactionFragment.newInstance(
+                    AddTransactionFragment.AddTransactionType.INCOMES
+                )
+            )
+            .addToBackStack("AddIncomeScreen")
             .commit()
     }
 }

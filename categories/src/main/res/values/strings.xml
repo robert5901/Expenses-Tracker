@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category_title">Категории</string>
+    <string name="category_new_category_hint">Новая категория</string>
+
+    <string name="category_menu_rename">Переименовать</string>
+    <string name="category_menu_delete">Удалить</string>
+</resources>
