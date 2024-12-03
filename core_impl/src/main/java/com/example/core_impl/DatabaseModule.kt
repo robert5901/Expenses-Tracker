@@ -2,8 +2,9 @@ package com.example.core_impl
 
 import android.content.Context
 import androidx.room.Room
-import com.example.core_api.database.ExpensesDao
+import com.example.core_api.database.dao.ExpensesDao
 import com.example.core_api.database.ExpensesDatabaseContract
+import com.example.core_api.database.dao.ExpenseCategoryDao
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -17,6 +18,14 @@ class DatabaseModule {
     @Reusable
     fun provideExpensesDao(expensesDatabaseContract: ExpensesDatabaseContract): ExpensesDao {
         return expensesDatabaseContract.expensesDao()
+    }
+
+    @Provides
+    @Reusable
+    fun provideExpenseCategoryDao(
+        expensesDatabaseContract: ExpensesDatabaseContract
+    ): ExpenseCategoryDao {
+        return expensesDatabaseContract.expenseCategoryDao()
     }
 
     @Provides

@@ -1,4 +1,4 @@
-package com.example.core_api.dto
+package com.example.core_api.entity
 
 import androidx.room.TypeConverter
 import java.util.Date
