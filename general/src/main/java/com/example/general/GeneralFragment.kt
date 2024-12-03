@@ -59,12 +59,16 @@ class GeneralFragment : Fragment() {
             balance.setItem(GeneralItemViewType.BALANCE, getAmountListForBalance())
 
             expenses.onClick = {
-                // TODO open AddTransactionFragment and pass Expenses enum
-                openTransactionScreen()
+                addTransactionScreenNavigator.startAddExpenseScreen(
+                    core_R.id.main_container,
+                    parentFragmentManager
+                )
             }
             incomes.onClick = {
-                // TODO open AddTransactionFragment and pass Incomes enum
-                openTransactionScreen()
+                addTransactionScreenNavigator.startAddIncomeScreen(
+                    core_R.id.main_container,
+                    parentFragmentManager
+                )
             }
             balance.onClick = {
                 // TODO open BalanceFragment
@@ -73,13 +77,6 @@ class GeneralFragment : Fragment() {
             expensesButton.setOnClickListener(transactionsListener)
             incomesButton.setOnClickListener(transactionsListener)
         }
-    }
-
-    private fun openTransactionScreen() {
-        addTransactionScreenNavigator.startAddTransactionScreen(
-            core_R.id.main_container,
-            parentFragmentManager
-        )
     }
 
     // TODO test data

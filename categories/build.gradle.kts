@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.add_transaction"
+    namespace = "com.example.categories"
     compileSdk = 34
 
     defaultConfig {
