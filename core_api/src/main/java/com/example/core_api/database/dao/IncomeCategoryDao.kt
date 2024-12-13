@@ -6,28 +6,28 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.core_api.entity.ExpenseCategoryEntity
+import com.example.core_api.entity.IncomeCategoryEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ExpenseCategoryDao {
+interface IncomeCategoryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(expenseCategory: ExpenseCategoryEntity)
+    suspend fun insert(incomeCategory: IncomeCategoryEntity)
 
     @Update
-    suspend fun update(expenseCategory: ExpenseCategoryEntity)
+    suspend fun update(incomeCategory: IncomeCategoryEntity)
 
     @Delete
-    suspend fun delete(expenseCategory: ExpenseCategoryEntity)
+    suspend fun delete(incomeCategory: IncomeCategoryEntity)
 
     @Query("DELETE FROM $TABLE_NAME WHERE categoryId = :categoryId")
-    suspend fun deleteExpenseCategory(categoryId: Long)
+    suspend fun deleteIncomeCategory(categoryId: Long)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    fun loadExpenseCategoryList(): Flow<List<ExpenseCategoryEntity>>
+    fun loadIncomeCategoryList(): Flow<List<IncomeCategoryEntity>>
 
     companion object {
-        const val TABLE_NAME = "EXPENSE_CATEGORY"
+        const val TABLE_NAME = "INCOME_CATEGORY"
     }
 }

@@ -1,7 +1,7 @@
 package com.example.categories.navigation
 
 import androidx.fragment.app.FragmentManager
-import com.example.categories.CategoryFragment
+import com.example.categories.presentation.CategoryFragment
 import com.example.core_api.mediators.CategoryScreenNavigator
 import com.example.ui_atoms.R
 import javax.inject.Inject

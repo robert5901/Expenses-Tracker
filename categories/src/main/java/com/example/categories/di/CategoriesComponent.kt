@@ -1,10 +1,11 @@
 package com.example.categories.di
 
-import com.example.categories.CategoryFragment
+import com.example.categories.presentation.CategoryFragment
 import com.example.core_api.mediators.ProvidersFacade
 import dagger.Component
 
 @Component(
+    modules = [CategoriesModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface CategoriesComponent {
