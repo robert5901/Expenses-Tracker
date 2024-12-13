@@ -11,7 +11,7 @@ import java.util.Date
     tableName = ExpensesDao.TABLE_NAME,
     foreignKeys = [
         ForeignKey(
-            entity = ExpenseCategory::class,
+            entity = ExpenseCategoryEntity::class,
             parentColumns = arrayOf("categoryId"),
             childColumns = arrayOf("categoryId"),
             onDelete = ForeignKey.CASCADE

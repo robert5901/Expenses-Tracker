@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 import com.example.core_api.database.dao.ExpenseCategoryDao
 
 @Entity(tableName = ExpenseCategoryDao.TABLE_NAME)
-data class ExpenseCategory(
+data class ExpenseCategoryEntity(
     @PrimaryKey(autoGenerate = true)
-    val categoryId: Long,
+    val categoryId: Long = 0,
     val name: String
 )

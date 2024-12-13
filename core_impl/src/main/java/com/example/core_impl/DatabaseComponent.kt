@@ -10,4 +10,4 @@ import dagger.Component
     dependencies = [AppProvider::class],
     modules = [DatabaseModule::class]
 )
-interface DatabaseComponent: DatabaseProvider {}
+interface DatabaseComponent: DatabaseProvider

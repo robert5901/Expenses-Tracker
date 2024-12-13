@@ -9,7 +9,7 @@ import java.util.Date
     tableName = "INCOMES",
     foreignKeys = [
         ForeignKey(
-            entity = IncomeCategory::class,
+            entity = IncomeCategoryEntity::class,
             parentColumns = arrayOf("categoryId"),
             childColumns = arrayOf("id"),
             onDelete = ForeignKey.CASCADE

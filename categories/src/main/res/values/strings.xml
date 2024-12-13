@@ -5,4 +5,7 @@
 
     <string name="category_menu_rename">Переименовать</string>
     <string name="category_menu_delete">Удалить</string>
+
+    <string name="category_empty_category_name_error">Введите название категории</string>
+    <string name="category_placeholder">Нет категорий</string>
 </resources>
