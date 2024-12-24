@@ -108,10 +108,6 @@ class CategoryFragment : Fragment() {
         }
     }
 
-    fun test2 () {
-        // master commit
-    }
-
     private fun configureListeners() {
         with(binding) {
             newCategoryButton.setOnClickListener {
