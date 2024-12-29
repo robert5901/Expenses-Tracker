@@ -2,7 +2,6 @@ package com.example.categories.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.example.categories.di.CategoriesComponent
 import com.example.categories.presentation.models.Category
 import com.example.categories.presentation.viewModel.CategoryViewModel
 import com.example.core_api.mediators.ExpensesTrackerApp
-import kotlinx.parcelize.Parcelize
 import javax.inject.Inject
 
 class CategoryFragment : Fragment() {
@@ -37,11 +35,13 @@ class CategoryFragment : Fragment() {
     private val adapter = CategoryListAdapter()
 
     private var categoryType: CategoryType? = null
+    private var transactionId: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         categoryType = arguments?.getParcelable(CATEGORY_TYPE_KEY)
+        transactionId = arguments?.getLong(TRANSACTION_ID_KEY)
 
         when (categoryType) {
             CategoryType.EXPENSES -> {
@@ -87,8 +87,24 @@ class CategoryFragment : Fragment() {
     private fun initRecyclerView() {
         binding.recyclerView.adapter = adapter
 
-        adapter.onItemClickAction = { category ->
-            // TODO choose this category
+        adapter.onItemClickAction = { categoryId ->
+            val transactionId = transactionId
+
+            if (transactionId != null) {
+                when (categoryType) {
+                    CategoryType.EXPENSES -> {
+                        viewModel.updateExpenseCategoryId(transactionId, categoryId)
+                    }
+
+                    CategoryType.INCOMES -> {
+                        viewModel.updateIncomeCategoryId(transactionId, categoryId)
+                    }
+
+                    null -> {}
+                }
+            }
+
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         adapter.onRenameItemClicked = { category ->
             showRenameDialog(category)
@@ -197,19 +213,16 @@ class CategoryFragment : Fragment() {
 
     companion object {
         private const val CATEGORY_TYPE_KEY = "categoryType"
+        private const val TRANSACTION_ID_KEY = "transactionId"
 
-        fun newInstance(categoryType: CategoryType): Fragment {
+        fun newInstance(categoryType: CategoryType, transactionId: Long): Fragment {
             val fragment = CategoryFragment()
             val args = Bundle().apply {
                 putParcelable(CATEGORY_TYPE_KEY, categoryType)
+                putLong(TRANSACTION_ID_KEY, transactionId)
             }
             fragment.arguments = args
             return fragment
         }
-    }
-
-    @Parcelize
-    enum class CategoryType: Parcelable {
-        EXPENSES, INCOMES;
     }
 }

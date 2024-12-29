@@ -1,10 +1,13 @@
 package com.example.add_transaction.di
 
-import com.example.add_transaction.AddTransactionFragment
+import com.example.add_transaction.presentation.AddTransactionFragment
 import com.example.core_api.mediators.ProvidersFacade
 import dagger.Component
 
-@Component(dependencies = [ProvidersFacade::class])
+@Component(
+    modules = [AddTransactionModule::class],
+    dependencies = [ProvidersFacade::class]
+)
 interface AddTransactionComponent {
 
     companion object {

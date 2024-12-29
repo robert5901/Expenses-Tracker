@@ -18,9 +18,9 @@ import java.util.Date
         )
     ]
 )
-data class Expense(
+data class ExpenseEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0,
     @ColumnInfo
     val date: Date,
     val categoryId: Long,

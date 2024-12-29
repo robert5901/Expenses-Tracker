@@ -24,10 +24,14 @@ interface ExpenseCategoryDao {
     @Query("DELETE FROM $TABLE_NAME WHERE categoryId = :categoryId")
     suspend fun deleteExpenseCategory(categoryId: Long)
 
-    @Query("SELECT * FROM $TABLE_NAME")
+    @Query("SELECT * FROM $TABLE_NAME WHERE categoryId != $DEFAULT_CATEGORY_ID")
     fun loadExpenseCategoryList(): Flow<List<ExpenseCategoryEntity>>
+
+    @Query("SELECT COUNT(*) FROM $TABLE_NAME WHERE categoryId = :categoryId")
+    suspend fun isCategoryExists(categoryId: Long): Int
 
     companion object {
         const val TABLE_NAME = "EXPENSE_CATEGORY"
+        const val DEFAULT_CATEGORY_ID = -1
     }
 }

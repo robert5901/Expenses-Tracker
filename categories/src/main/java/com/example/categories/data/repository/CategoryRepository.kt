@@ -3,6 +3,7 @@ package com.example.categories.data.repository
 import com.example.categories.data.mappers.CategoryMapper
 import com.example.categories.presentation.models.Category
 import com.example.core_api.database.dao.ExpenseCategoryDao
+import com.example.core_api.database.dao.ExpensesDao
 import com.example.core_api.database.dao.IncomeCategoryDao
 import com.example.core_api.entity.ExpenseCategoryEntity
 import com.example.core_api.entity.IncomeCategoryEntity
@@ -12,7 +13,8 @@ import javax.inject.Inject
 class CategoryRepository @Inject constructor(
     private val expenseCategoryDao: ExpenseCategoryDao,
     private val incomeCategoryDao: IncomeCategoryDao,
-    private val categoryMapper: CategoryMapper
+    private val categoryMapper: CategoryMapper,
+    private val expenseDao: ExpensesDao
 ) {
 
     suspend fun saveExpenseCategory(categoryName: String) {
@@ -55,5 +57,12 @@ class CategoryRepository @Inject constructor(
 
     suspend fun renameIncomeCategory(category: Category) {
         incomeCategoryDao.update(categoryMapper.mapToIncomeCategoryEntity(category))
+    }
+
+    suspend fun updateExpenseCategoryId(transactionId: Long, categoryId: Long) {
+        expenseDao.updateExpenseCategoryId(
+            transactionId,
+            categoryId
+        )
     }
 }

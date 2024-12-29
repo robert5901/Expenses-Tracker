@@ -46,6 +46,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // KTX
+    implementation(libs.androidx.fragment.ktx)
+
     // viewBinding
     implementation(libs.kirich1409.viewbindingpropertydelegate.noreflection)
 

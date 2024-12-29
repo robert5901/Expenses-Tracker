@@ -7,13 +7,14 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.categories.data.repository.CategoryRepository
 import com.example.categories.presentation.models.Category
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryViewModel(
-    private val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository,
 ): ViewModel() {
 
     private val _expenseCategoryList = MutableStateFlow<List<Category>>(emptyList())
@@ -21,6 +22,8 @@ class CategoryViewModel(
 
     private val _incomeCategoryList = MutableStateFlow<List<Category>>(emptyList())
     val incomeCategoryList: LiveData<List<Category>> = _incomeCategoryList.asLiveData()
+
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     fun saveExpenseCategory(categoryName: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -50,6 +53,16 @@ class CategoryViewModel(
                     _incomeCategoryList.value = categories
                 }
         }
+    }
+
+    fun updateExpenseCategoryId(transactionId: Long, categoryId: Long) {
+        scope.launch {
+            categoryRepository.updateExpenseCategoryId(transactionId, categoryId)
+        }
+    }
+
+    fun updateIncomeCategoryId(transactionId: Long?, categoryId: Long) {
+
     }
 
     fun deleteExpenseCategory(categoryId: Long) {

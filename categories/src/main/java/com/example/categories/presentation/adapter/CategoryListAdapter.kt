@@ -16,7 +16,7 @@ import com.example.categories.presentation.models.Category
 class CategoryListAdapter :
     ListAdapter<Category, CategoryListAdapter.CategoryViewHolder>(CategoryDiffUtil()) {
 
-    var onItemClickAction: ((Category) -> Unit)? = null
+    var onItemClickAction: ((Long) -> Unit)? = null
     var onRenameItemClicked: ((Category) -> Unit)? = null
     var onDeleteItemClicked: ((Category) -> Unit)? = null
 
@@ -42,7 +42,7 @@ class CategoryListAdapter :
         RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
-                onItemClickAction?.invoke(getItem(adapterPosition))
+                onItemClickAction?.invoke(getItem(adapterPosition).categoryId)
             }
 
             binding.settings.setOnClickListener { view ->
