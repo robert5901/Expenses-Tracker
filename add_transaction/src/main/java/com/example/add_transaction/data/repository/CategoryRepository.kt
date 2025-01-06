@@ -4,7 +4,6 @@ import com.example.add_transaction.data.mappers.CategoryMapper
 import com.example.add_transaction.presentation.models.Category
 import com.example.add_transaction.presentation.models.TransactionType
 import com.example.core_api.database.dao.ExpenseCategoryDao
-import com.example.core_api.database.dao.ExpensesDao
 import com.example.core_api.database.dao.IncomeCategoryDao
 import com.example.core_api.entity.ExpenseCategoryEntity
 import com.example.core_api.entity.IncomeCategoryEntity
@@ -15,7 +14,6 @@ class CategoryRepository @Inject constructor(
     private val expenseCategoryDao: ExpenseCategoryDao,
     private val incomeCategoryDao: IncomeCategoryDao,
     private val categoryMapper: CategoryMapper,
-    private val expenseDao: ExpensesDao
 ) {
 
     suspend fun saveCategory(transactionType: TransactionType, categoryName: String) {
