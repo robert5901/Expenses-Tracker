@@ -17,7 +17,7 @@ class CategoryListAdapter :
 
     var onItemClickAction: ((Category) -> Unit)? = null
     var onRenameItemClicked: ((Category) -> Unit)? = null
-    var onDeleteItemClicked: ((Category) -> Unit)? = null
+    var onDeleteItemClicked: ((Long) -> Unit)? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -65,7 +65,7 @@ class CategoryListAdapter :
                     }
 
                     R.id.category_menu_delete -> {
-                        onDeleteItemClicked?.invoke(getItem(adapterPosition))
+                        onDeleteItemClicked?.invoke(getItem(adapterPosition).categoryId)
                         true
                     }
 
