@@ -1,7 +1,6 @@
 package com.example.core_api.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -17,9 +16,6 @@ interface IncomeCategoryDao {
 
     @Update
     suspend fun update(incomeCategory: IncomeCategoryEntity)
-
-    @Delete
-    suspend fun delete(incomeCategory: IncomeCategoryEntity)
 
     @Query("DELETE FROM $TABLE_NAME WHERE categoryId = :categoryId")
     suspend fun deleteIncomeCategory(categoryId: Long)
