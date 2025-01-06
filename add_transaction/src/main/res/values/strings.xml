@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="common_ok">Ок</string>
+    <string name="common_cancel">Отмена</string>
+    <string name="common_no">Нет</string>
+    <string name="common_yes">Да</string>
+
     <string name="add_expense_title">Расход</string>
     <string name="add_income_title">Доход</string>
 
@@ -15,6 +20,10 @@
 
     <string name="category_title">Категории</string>
     <string name="category_new_category_hint">Новая категория</string>
+
+    <string name="category_rename_category_alert_title">Изменение названия</string>
+    <string name="category_delete_category_alert_title">Предупреждение</string>
+    <string name="category_delete_category_alert_message">Все записи этой категории будут стерты. Проолжить?</string>
 
     <string name="category_menu_rename">Переименовать</string>
     <string name="category_menu_delete">Удалить</string>

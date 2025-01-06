@@ -12,9 +12,6 @@ interface ExpensesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(expenseEntity: ExpenseEntity)
 
-    @Query("SELECT id FROM $TABLE_NAME WHERE categoryId = -1 LIMIT 1")
-    suspend fun getDefaultExpenseId() : Long
-
     @Query("UPDATE $TABLE_NAME SET categoryId = :categoryId WHERE id = :transactionId")
     suspend fun updateExpenseCategoryId(transactionId: Long, categoryId: Long)
 

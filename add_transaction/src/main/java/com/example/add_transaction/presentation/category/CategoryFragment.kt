@@ -92,10 +92,8 @@ class CategoryFragment: Fragment() {
         adapter.onRenameItemClicked = { category ->
             showRenameDialog(category)
         }
-        adapter.onDeleteItemClicked = { category ->
-            transactionType?.let {
-                categoryViewModel.deleteCategory(it, category.categoryId)
-            }
+        adapter.onDeleteItemClicked = { categoryId ->
+            showDeleteDialog(categoryId)
         }
     }
 
@@ -139,9 +137,9 @@ class CategoryFragment: Fragment() {
         editText.setText(category.name)
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Изменение названия")
+            .setTitle(resources.getString(R.string.category_rename_category_alert_title))
             .setView(editText)
-            .setPositiveButton("Ок") { dialog, _ ->
+            .setPositiveButton(resources.getString(R.string.common_ok)) { dialog, _ ->
                 if (editText.text.toString().isNotBlank()
                     && editText.text.toString() != category.name
                 ) {
@@ -149,7 +147,24 @@ class CategoryFragment: Fragment() {
                 }
                 dialog.dismiss()
             }
-            .setNegativeButton("Отмена") { dialog, _ ->
+            .setNegativeButton(resources.getString(R.string.common_cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun showDeleteDialog(categoryId: Long) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(resources.getString(R.string.category_delete_category_alert_title))
+            .setMessage(resources.getString(R.string.category_delete_category_alert_message))
+            .setNegativeButton(resources.getString(R.string.common_no)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(resources.getString(R.string.common_yes)) { dialog, _ ->
+                transactionType?.let {
+                    categoryViewModel.deleteCategory(it, categoryId)
+                }
                 dialog.dismiss()
             }
             .create()

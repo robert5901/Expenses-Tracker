@@ -6,6 +6,7 @@ import com.example.core_api.database.dao.ExpensesDao
 import com.example.core_api.database.ExpensesDatabaseContract
 import com.example.core_api.database.dao.ExpenseCategoryDao
 import com.example.core_api.database.dao.IncomeCategoryDao
+import com.example.core_api.database.dao.IncomesDao
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -19,6 +20,12 @@ class DatabaseModule {
     @Reusable
     fun provideExpensesDao(expensesDatabaseContract: ExpensesDatabaseContract): ExpensesDao {
         return expensesDatabaseContract.expensesDao()
+    }
+
+    @Provides
+    @Reusable
+    fun provideIncomesDao(expensesDatabaseContract: ExpensesDatabaseContract): IncomesDao {
+        return expensesDatabaseContract.incomesDao()
     }
 
     @Provides

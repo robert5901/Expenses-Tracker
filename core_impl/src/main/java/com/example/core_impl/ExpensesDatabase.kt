@@ -7,13 +7,13 @@ import com.example.core_api.database.ExpensesDatabaseContract
 import com.example.core_api.entity.DateConverter
 import com.example.core_api.entity.ExpenseEntity
 import com.example.core_api.entity.ExpenseCategoryEntity
-import com.example.core_api.entity.Income
+import com.example.core_api.entity.IncomeEntity
 import com.example.core_api.entity.IncomeCategoryEntity
 
 @Database(
     entities = [
         ExpenseEntity::class,
-        Income::class,
+        IncomeEntity::class,
         ExpenseCategoryEntity::class,
         IncomeCategoryEntity::class
     ],
