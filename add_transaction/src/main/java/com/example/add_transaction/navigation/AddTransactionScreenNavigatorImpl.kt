@@ -1,7 +1,8 @@
 package com.example.add_transaction.navigation
 
 import androidx.fragment.app.FragmentManager
-import com.example.add_transaction.presentation.AddTransactionFragment
+import com.example.add_transaction.presentation.AddTransactionMainFragment
+import com.example.add_transaction.presentation.models.TransactionType
 import com.example.core_api.mediators.AddTransactionScreenNavigator
 import com.example.ui_atoms.R
 import javax.inject.Inject
@@ -18,8 +19,8 @@ class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionSc
             )
             .add(
                 containerId,
-                AddTransactionFragment.newInstance(
-                    AddTransactionFragment.AddTransactionType.EXPENSES
+                AddTransactionMainFragment.newInstance(
+                    TransactionType.EXPENSES
                 )
             )
             .addToBackStack("AddExpenseScreen")
@@ -36,8 +37,8 @@ class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionSc
             )
             .add(
                 containerId,
-                AddTransactionFragment.newInstance(
-                    AddTransactionFragment.AddTransactionType.INCOMES
+                AddTransactionMainFragment.newInstance(
+                    TransactionType.INCOMES
                 )
             )
             .addToBackStack("AddIncomeScreen")

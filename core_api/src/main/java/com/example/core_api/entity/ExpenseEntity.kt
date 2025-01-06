@@ -23,6 +23,7 @@ data class ExpenseEntity(
     val id: Long = 0,
     @ColumnInfo
     val date: Date,
+    val time: Date,
     val categoryId: Long,
     val amount: Double,
     val currency: String,

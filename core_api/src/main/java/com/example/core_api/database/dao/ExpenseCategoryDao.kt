@@ -24,7 +24,7 @@ interface ExpenseCategoryDao {
     @Query("DELETE FROM $TABLE_NAME WHERE categoryId = :categoryId")
     suspend fun deleteExpenseCategory(categoryId: Long)
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE categoryId != $DEFAULT_CATEGORY_ID")
+    @Query("SELECT * FROM $TABLE_NAME")
     fun loadExpenseCategoryList(): Flow<List<ExpenseCategoryEntity>>
 
     @Query("SELECT COUNT(*) FROM $TABLE_NAME WHERE categoryId = :categoryId")

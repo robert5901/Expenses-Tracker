@@ -6,15 +6,13 @@ import javax.inject.Inject
 
 class TransactionMapper @Inject constructor() {
 
-    fun mapDefaultTransactionToExpenseEntity(
-        transaction: Transaction
-    ): ExpenseEntity {
-        return ExpenseEntity(
+    fun mapTransactionToExpenseEntity(transaction: Transaction): ExpenseEntity =
+        ExpenseEntity(
             date = transaction.date,
+            time = transaction.time,
             categoryId = transaction.categoryId,
             amount = transaction.amount,
             currency = transaction.currency,
             comment = transaction.comment
         )
-    }
 }

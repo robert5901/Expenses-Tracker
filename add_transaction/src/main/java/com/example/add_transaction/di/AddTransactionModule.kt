@@ -1,7 +1,8 @@
 package com.example.add_transaction.di
 
 import androidx.lifecycle.ViewModelProvider
-import com.example.add_transaction.navigation.viewModel.AddTransactionViewModelFactory
+import com.example.add_transaction.presentation.addTransaction.AddTransactionViewModelFactory
+import com.example.add_transaction.presentation.category.CategoryViewModelFactory
 import dagger.Binds
 import dagger.Module
 
@@ -9,7 +10,14 @@ import dagger.Module
 interface AddTransactionModule {
 
     @Binds
+    @AddTransactionFactory
     fun bindAddTransactionViewModelFactory(
         addTransactionViewModelFactory: AddTransactionViewModelFactory
+    ): ViewModelProvider.Factory
+
+    @Binds
+    @CategoryFactory
+    fun bindsCategoryViewModelFactory(
+        categoryViewModelFactory: CategoryViewModelFactory
     ): ViewModelProvider.Factory
 }
