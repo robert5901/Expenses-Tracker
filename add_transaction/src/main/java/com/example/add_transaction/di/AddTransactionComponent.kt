@@ -1,6 +1,7 @@
 package com.example.add_transaction.di
 
-import com.example.add_transaction.presentation.AddTransactionFragment
+import com.example.add_transaction.presentation.AddTransactionMainFragment
+import com.example.add_transaction.presentation.category.CategoryFragment
 import com.example.core_api.mediators.ProvidersFacade
 import dagger.Component
 
@@ -20,5 +21,7 @@ interface AddTransactionComponent {
         }
     }
 
-    fun inject(addTransactionFragment: AddTransactionFragment)
+    fun inject(addTransactionMainFragment: AddTransactionMainFragment)
+
+    fun inject(categoryFragment: CategoryFragment)
 }
