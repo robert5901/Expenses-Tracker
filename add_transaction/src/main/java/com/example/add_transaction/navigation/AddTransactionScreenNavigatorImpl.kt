@@ -17,7 +17,7 @@ class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionSc
                 R.anim.slide_in_left,
                 R.anim.slide_out_right,
             )
-            .add(
+            .replace(
                 containerId,
                 AddTransactionMainFragment.newInstance(
                     TransactionType.EXPENSES
@@ -35,7 +35,7 @@ class AddTransactionScreenNavigatorImpl @Inject constructor() : AddTransactionSc
                 R.anim.slide_in_left,
                 R.anim.slide_out_right,
             )
-            .add(
+            .replace(
                 containerId,
                 AddTransactionMainFragment.newInstance(
                     TransactionType.INCOMES

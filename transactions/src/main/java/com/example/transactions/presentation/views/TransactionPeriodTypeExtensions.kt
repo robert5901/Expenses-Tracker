@@ -1,4 +1,4 @@
-package com.example.transactions.views
+package com.example.transactions.presentation.views
 
 val TransactionPeriodType.isButtonsVisible: Boolean
     get() = when (this) {

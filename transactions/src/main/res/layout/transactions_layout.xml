@@ -76,13 +76,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.transactions.views.TransactionsPeriodView
+    <com.example.transactions.presentation.views.TransactionsPeriodView
         android:id="@+id/transaction_period_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar_barrier" />
 
-    <com.example.transactions.views.TransactionTotalAmountView
+    <com.example.transactions.presentation.views.TransactionTotalAmountView
         android:id="@+id/transaction_total_amount_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

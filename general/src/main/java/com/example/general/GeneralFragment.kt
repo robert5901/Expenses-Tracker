@@ -27,13 +27,6 @@ class GeneralFragment : Fragment() {
 
     private val binding by viewBinding(FragmentGeneralBinding::bind)
 
-    private val transactionsListener: (View) -> Unit = {
-        transactionsScreenNavigator.startTransactionScreen(
-            core_R.id.main_container,
-            parentFragmentManager
-        )
-    }
-
     override fun onAttach(context: Context) {
         GeneralComponent.create(
             (requireActivity().application as ExpensesTrackerApp).getFacade()
@@ -74,8 +67,19 @@ class GeneralFragment : Fragment() {
                 // TODO open BalanceFragment
             }
 
-            expensesButton.setOnClickListener(transactionsListener)
-            incomesButton.setOnClickListener(transactionsListener)
+            expensesButton.setOnClickListener {
+                transactionsScreenNavigator.startExpensesScreen(
+                    core_R.id.main_container,
+                    parentFragmentManager
+                )
+            }
+
+            incomesButton.setOnClickListener {
+                transactionsScreenNavigator.startIncomesScreen(
+                    core_R.id.main_container,
+                    parentFragmentManager
+                )
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.transactions.adapters
+package com.example.transactions.presentation.transactions.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.transactions.databinding.ListItemTransactionCategoryBinding
-import com.example.transactions.models.TransactionCategory
+import com.example.transactions.presentation.models.TransactionCategory
 
 class TransactionCategoriesAdapter :
     ListAdapter<TransactionCategory, TransactionCategoriesAdapter.TransactionCategoriesViewHolder>(

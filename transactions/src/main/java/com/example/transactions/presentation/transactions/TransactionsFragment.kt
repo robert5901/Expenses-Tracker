@@ -1,4 +1,4 @@
-package com.example.transactions
+package com.example.transactions.presentation.transactions
 
 import android.content.Context
 import android.os.Bundle
@@ -9,9 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.core_api.mediators.ExpensesTrackerApp
-import com.example.transactions.adapters.TransactionCategoriesAdapter
-import com.example.transactions.models.TransactionCategory
-import com.example.transactions.views.TransactionPeriodType
+import com.example.transactions.R
+import com.example.transactions.presentation.transactions.adapters.TransactionCategoriesAdapter
+import com.example.transactions.presentation.models.TransactionCategory
+import com.example.transactions.presentation.views.TransactionPeriodType
 import com.example.transactions.databinding.TransactionsLayoutBinding
 import com.example.transactions.di.TransactionsComponent
 
