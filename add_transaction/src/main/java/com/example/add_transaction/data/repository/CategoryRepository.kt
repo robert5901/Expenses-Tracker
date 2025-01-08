@@ -39,12 +39,12 @@ class CategoryRepository @Inject constructor(
     fun loadCategoryList(transactionType: TransactionType): Flow<List<Category>> {
         when (transactionType) {
             TransactionType.EXPENSES -> {
-                val expenseCategoryListEntity = expenseCategoryDao.loadExpenseCategoryList()
+                val expenseCategoryListEntity = expenseCategoryDao.getExpenseCategoryList()
                 return categoryMapper.mapExpenseCategoryEntityToCategory(expenseCategoryListEntity)
             }
 
             TransactionType.INCOMES -> {
-                val incomeCategoryListEntity = incomeCategoryDao.loadIncomeCategoryList()
+                val incomeCategoryListEntity = incomeCategoryDao.getIncomeCategoryList()
                 return categoryMapper.mapIncomeCategoryEntityToCategory(incomeCategoryListEntity)
             }
         }

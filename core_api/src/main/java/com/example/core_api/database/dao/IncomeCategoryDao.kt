@@ -21,7 +21,7 @@ interface IncomeCategoryDao {
     suspend fun deleteIncomeCategory(categoryId: Long)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    fun loadIncomeCategoryList(): Flow<List<IncomeCategoryEntity>>
+    fun getIncomeCategoryList(): Flow<List<IncomeCategoryEntity>>
 
     companion object {
         const val TABLE_NAME = "INCOME_CATEGORY"

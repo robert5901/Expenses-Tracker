@@ -87,9 +87,7 @@ class AddTransactionFragment : Fragment() {
             val currency = "RUB"
             val comment = binding.comment.text.toString()
 
-            transactionType?.let {
-                viewModel.createTransaction(it, amount.toDouble(), currency, comment)
-            }
+            viewModel.createTransaction(amount.toDouble(), currency, comment)
 
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }

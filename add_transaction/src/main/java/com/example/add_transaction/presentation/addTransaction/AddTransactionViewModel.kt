@@ -41,7 +41,6 @@ class AddTransactionViewModel(
     }
 
     fun createTransaction(
-        transactionType: TransactionType,
         amount: Double,
         currency: String,
         comment: String

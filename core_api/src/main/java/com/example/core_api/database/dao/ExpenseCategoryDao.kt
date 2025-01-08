@@ -21,7 +21,7 @@ interface ExpenseCategoryDao {
     suspend fun deleteExpenseCategory(categoryId: Long)
 
     @Query("SELECT * FROM $TABLE_NAME")
-    fun loadExpenseCategoryList(): Flow<List<ExpenseCategoryEntity>>
+    fun getExpenseCategoryList(): Flow<List<ExpenseCategoryEntity>>
 
     companion object {
         const val TABLE_NAME = "EXPENSE_CATEGORY"
