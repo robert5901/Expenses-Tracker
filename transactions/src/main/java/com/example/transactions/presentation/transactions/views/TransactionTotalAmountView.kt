@@ -1,4 +1,4 @@
-package com.example.transactions.presentation.views
+package com.example.transactions.presentation.transactions.views
 
 import android.content.Context
 import android.util.AttributeSet

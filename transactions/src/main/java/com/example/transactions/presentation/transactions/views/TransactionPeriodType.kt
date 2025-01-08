@@ -1,11 +1,12 @@
-package com.example.transactions.presentation.views
+package com.example.transactions.presentation.transactions.views
 
 enum class TransactionPeriodType {
     DAY,
     WEEK,
     MONTH,
     YEAR,
-    PERIOD;
+    PERIOD,
+    All;
 
     val dateFormat: String
         get() = when (this) {
@@ -14,5 +15,6 @@ enum class TransactionPeriodType {
             MONTH -> "MMMM yyyy"
             YEAR -> "yyyy"
             PERIOD -> "dd MMM yyyy"
+            All -> ""
         }
 }

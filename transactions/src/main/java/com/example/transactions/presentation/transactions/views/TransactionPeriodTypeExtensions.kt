@@ -1,4 +1,4 @@
-package com.example.transactions.presentation.views
+package com.example.transactions.presentation.transactions.views
 
 val TransactionPeriodType.isButtonsVisible: Boolean
     get() = when (this) {
@@ -7,6 +7,7 @@ val TransactionPeriodType.isButtonsVisible: Boolean
         TransactionPeriodType.MONTH -> true
         TransactionPeriodType.YEAR -> true
         TransactionPeriodType.PERIOD -> false
+        TransactionPeriodType.All -> false
     }
 
 val TransactionPeriodType.isDateInputLayoutVisible: Boolean
@@ -16,6 +17,7 @@ val TransactionPeriodType.isDateInputLayoutVisible: Boolean
         TransactionPeriodType.MONTH -> true
         TransactionPeriodType.YEAR -> false
         TransactionPeriodType.PERIOD -> false
+        TransactionPeriodType.All -> false
     }
 
 val TransactionPeriodType.isDateTextViewVisible
@@ -25,6 +27,7 @@ val TransactionPeriodType.isDateTextViewVisible
         TransactionPeriodType.MONTH -> false
         TransactionPeriodType.YEAR -> true
         TransactionPeriodType.PERIOD -> false
+        TransactionPeriodType.All -> false
     }
 
 val TransactionPeriodType.isStartEndDateInputLayoutVisible
@@ -34,6 +37,7 @@ val TransactionPeriodType.isStartEndDateInputLayoutVisible
         TransactionPeriodType.MONTH -> false
         TransactionPeriodType.YEAR -> false
         TransactionPeriodType.PERIOD -> true
+        TransactionPeriodType.All -> false
     }
 
 val TransactionPeriodType.isHyphenVisible
@@ -43,4 +47,5 @@ val TransactionPeriodType.isHyphenVisible
         TransactionPeriodType.MONTH -> false
         TransactionPeriodType.YEAR -> false
         TransactionPeriodType.PERIOD -> true
+        TransactionPeriodType.All -> false
     }

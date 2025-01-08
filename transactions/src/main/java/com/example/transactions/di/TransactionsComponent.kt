@@ -1,10 +1,11 @@
 package com.example.transactions.di
 
 import com.example.core_api.mediators.ProvidersFacade
-import com.example.transactions.presentation.transactions.TransactionsFragment
+import com.example.transactions.presentation.TransactionListMainFragment
 import dagger.Component
 
 @Component(
+    modules = [TransactionsModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface TransactionsComponent {
@@ -19,5 +20,5 @@ interface TransactionsComponent {
         }
     }
 
-    fun inject(transactionsFragment: TransactionsFragment)
+    fun inject(transactionListMainFragment: TransactionListMainFragment)
 }

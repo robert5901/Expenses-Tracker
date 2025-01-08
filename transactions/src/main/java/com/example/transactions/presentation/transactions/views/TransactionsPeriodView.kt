@@ -1,4 +1,4 @@
-package com.example.transactions.presentation.views
+package com.example.transactions.presentation.transactions.views
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -18,8 +18,13 @@ class TransactionsPeriodView @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs) {
 
     private val binding by viewBinding(TransactionsPeriodBinding::bind)
+
     private var currentPickedDate = Date()
     private var transactionPeriodType = TransactionPeriodType.DAY
+
+    var onDateChanged: ((Date, TransactionPeriodType) -> Unit)? = null
+    var onStartPeriodDateChanged: ((Date, TransactionPeriodType) -> Unit)? = null
+    var onEndPeriodDateChanged: ((Date, TransactionPeriodType) -> Unit)? = null
 
     init {
         inflate(context, R.layout.transactions_period, this)
@@ -30,18 +35,22 @@ class TransactionsPeriodView @JvmOverloads constructor(
     fun setPeriod(transactionPeriodType: TransactionPeriodType) {
         this.transactionPeriodType = transactionPeriodType
 
+        val currentDate = Date()
+        currentPickedDate = currentDate
+
         with(binding) {
             date.setText(resources.getString(R.string.add_expense_title))
 
             when (transactionPeriodType) {
-                TransactionPeriodType.DAY -> setDay(currentPickedDate)
-                TransactionPeriodType.WEEK -> setWeek(currentPickedDate)
-                TransactionPeriodType.MONTH -> setMonth(currentPickedDate)
-                TransactionPeriodType.YEAR -> setYear(currentPickedDate)
+                TransactionPeriodType.DAY -> setDay(currentDate)
+                TransactionPeriodType.WEEK -> setWeek(currentDate)
+                TransactionPeriodType.MONTH -> setMonth(currentDate)
+                TransactionPeriodType.YEAR -> setYear(currentDate)
                 TransactionPeriodType.PERIOD -> {
-                    setStartPeriodDate(currentPickedDate)
-                    setEndPeriodDate(currentPickedDate)
+                    setStartPeriodDate(currentDate)
+                    setEndPeriodDate(currentDate)
                 }
+                TransactionPeriodType.All -> {}
             }
 
             previousButton.isVisible = transactionPeriodType.isButtonsVisible
@@ -65,6 +74,7 @@ class TransactionsPeriodView @JvmOverloads constructor(
                     TransactionPeriodType.MONTH -> setMonth(pickedDate)
                     TransactionPeriodType.YEAR -> setYear(pickedDate)
                     TransactionPeriodType.PERIOD -> {}
+                    TransactionPeriodType.All -> {}
                 }
             }
         }
@@ -95,6 +105,7 @@ class TransactionsPeriodView @JvmOverloads constructor(
         val formattedDate = dateFormat.format(date)
 
         binding.date.setText(formattedDate)
+        onDateChanged?.invoke(date, TransactionPeriodType.DAY)
     }
 
     private fun setWeek(date: Date) {
@@ -118,6 +129,7 @@ class TransactionsPeriodView @JvmOverloads constructor(
         val formattedDate = "$formattedFirstDay - $formattedLastDayWithYear"
 
         binding.date.setText(formattedDate)
+            onDateChanged?.invoke(date, TransactionPeriodType.WEEK)
     }
 
     private fun setMonth(date: Date) {
@@ -125,6 +137,7 @@ class TransactionsPeriodView @JvmOverloads constructor(
         val formattedDate = dateFormat.format(date)
 
         binding.date.setText(formattedDate)
+        onDateChanged?.invoke(date, TransactionPeriodType.MONTH)
     }
 
     private fun setYear(date: Date) {
@@ -132,18 +145,21 @@ class TransactionsPeriodView @JvmOverloads constructor(
         val formattedDate = dateFormat.format(date)
 
         binding.dateTextView.text = formattedDate
+        onDateChanged?.invoke(date, TransactionPeriodType.YEAR)
     }
 
     private fun setStartPeriodDate(date: Date) {
         val dateFormat = SimpleDateFormat(TransactionPeriodType.PERIOD.dateFormat, Locale(LOCALE))
         val formattedDate = dateFormat.format(date)
         binding.startDate.setText(formattedDate)
+        onStartPeriodDateChanged?.invoke(date, TransactionPeriodType.PERIOD)
     }
 
     private fun setEndPeriodDate(date: Date) {
         val dateFormat = SimpleDateFormat(TransactionPeriodType.PERIOD.dateFormat, Locale(LOCALE))
         val formattedDate = dateFormat.format(date)
         binding.endDate.setText(formattedDate)
+        onEndPeriodDateChanged?.invoke(date, TransactionPeriodType.PERIOD)
     }
 
     private fun shiftPeriod(changeType: ChangePeriodType) {
@@ -177,6 +193,10 @@ class TransactionsPeriodView @JvmOverloads constructor(
             TransactionPeriodType.PERIOD -> {
                 calendarField = Calendar.YEAR
                 setMethod = ::setYear
+            }
+            TransactionPeriodType.All -> {
+                calendarField = Calendar.DAY_OF_YEAR
+                setMethod = ::setDay
             }
         }
 
