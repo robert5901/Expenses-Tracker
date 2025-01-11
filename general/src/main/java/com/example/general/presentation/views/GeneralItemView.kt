@@ -1,4 +1,4 @@
-package com.example.general.views
+package com.example.general.presentation.views
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -8,13 +8,16 @@ import androidx.core.content.ContextCompat
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.general.R
 import com.example.general.databinding.GeneralItemBinding
-import com.example.general.domain.models.GeneralAmount
+import com.example.general.presentation.models.GeneralAmount
 
 class GeneralItemView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
     private val binding by viewBinding(GeneralItemBinding::bind)
+
+    private val generalItemAmountViewList = mutableListOf<GeneralItemAmountView>()
+
     var onClick: (() -> Unit)? = null
 
     init {
@@ -45,6 +48,14 @@ class GeneralItemView @JvmOverloads constructor(
     }
 
     private fun configureExpensesItem(amountList: List<Double>) {
+        if (generalItemAmountViewList.isNotEmpty()) {
+            generalItemAmountViewList.forEachIndexed { index, view ->
+                view.setAmount(amountList[index])
+            }
+
+            return
+        }
+
         val expensesColor = ColorStateList.valueOf(
             ContextCompat.getColor(context, R.color.general_expenses)
         )
@@ -110,7 +121,8 @@ class GeneralItemView @JvmOverloads constructor(
 
     private fun createAmountView(generalAmount: GeneralAmount, dividerVisible: Boolean = true) {
         val generalItemAmountView = GeneralItemAmountView(context)
-        generalItemAmountView.setAmount(generalAmount, dividerVisible)
+        generalItemAmountView.setAmountView(generalAmount, dividerVisible)
+        generalItemAmountViewList.add(generalItemAmountView)
 
         binding.amountLayout.addView(generalItemAmountView)
     }

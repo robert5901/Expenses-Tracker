@@ -1,11 +1,11 @@
 package com.example.general.di
 
 import com.example.core_api.mediators.ProvidersFacade
-import com.example.general.GeneralFragment
+import com.example.general.presentation.GeneralFragment
 import dagger.Component
 
 @Component(
-    modules = [],
+    modules = [GeneralModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface GeneralComponent {

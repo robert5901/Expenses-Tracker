@@ -1,4 +1,4 @@
-package com.example.general.domain.models
+package com.example.general.presentation.models
 
 data class GeneralAmount (
     val title: String,

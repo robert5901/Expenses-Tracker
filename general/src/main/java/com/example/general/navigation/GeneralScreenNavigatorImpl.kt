@@ -2,7 +2,7 @@ package com.example.general.navigation
 
 import androidx.fragment.app.FragmentManager
 import com.example.core_api.mediators.GeneralScreenNavigator
-import com.example.general.GeneralFragment
+import com.example.general.presentation.GeneralFragment
 import javax.inject.Inject
 
 class GeneralScreenNavigatorImpl @Inject constructor() : GeneralScreenNavigator {
