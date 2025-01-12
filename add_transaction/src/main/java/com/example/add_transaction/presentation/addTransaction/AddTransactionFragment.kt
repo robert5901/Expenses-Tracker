@@ -71,6 +71,7 @@ class AddTransactionFragment : Fragment() {
             SimpleDateFormat("HH:mm", Locale.getDefault()).format(selectedTime.time)
         binding.time.setText(formattedTime)
 
+        // TODO get default or saved currency
         binding.currency.setText("RUB")
     }
 
@@ -83,13 +84,15 @@ class AddTransactionFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // TODO get picked currency
-            val currency = "RUB"
             val comment = binding.comment.text.toString()
 
-            viewModel.createTransaction(amount.toDouble(), currency, comment)
+            viewModel.createTransaction(amount.toDouble(), comment)
 
             requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
+
+        binding.currency.setOnClickListener {
+            findNavController().navigate(AddTransactionFragmentDirections.toCurrencyFragment())
         }
 
         binding.category.setOnClickListener {
@@ -112,6 +115,10 @@ class AddTransactionFragment : Fragment() {
     private fun configureObservers() {
         viewModel.categoryName.observe(viewLifecycleOwner) {
             binding.category.setText(it)
+        }
+
+        viewModel.currencyName.observe(viewLifecycleOwner) {
+            binding.currency.setText(it)
         }
     }
 

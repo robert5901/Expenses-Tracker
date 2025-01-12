@@ -9,3 +9,7 @@ annotation class AddTransactionFactory
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class CategoryFactory
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class CurrencyFactory

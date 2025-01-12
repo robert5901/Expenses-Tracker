@@ -202,7 +202,6 @@
             android:backgroundTint="@color/colorPrimary"
             android:cursorVisible="false"
             android:focusable="false"
-            android:text="RUB"
             android:inputType="none"
             android:textAppearance="@style/TextAppearance.ExpensesTracker.Header.18_21"
             android:textColor="@color/white" />

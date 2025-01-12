@@ -2,6 +2,7 @@ package com.example.add_transaction.di
 
 import com.example.add_transaction.presentation.AddTransactionMainFragment
 import com.example.add_transaction.presentation.category.CategoryFragment
+import com.example.add_transaction.presentation.currency.CurrencyFragment
 import com.example.core_api.mediators.ProvidersFacade
 import dagger.Component
 
@@ -24,4 +25,6 @@ interface AddTransactionComponent {
     fun inject(addTransactionMainFragment: AddTransactionMainFragment)
 
     fun inject(categoryFragment: CategoryFragment)
+
+    fun inject(currencyFragment: CurrencyFragment)
 }

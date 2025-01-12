@@ -16,6 +16,8 @@
             <option value="$PROJECT_DIR$/core_impl" />
             <option value="$PROJECT_DIR$/general" />
             <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/network_api" />
+            <option value="$PROJECT_DIR$/network_impl" />
             <option value="$PROJECT_DIR$/transactions" />
             <option value="$PROJECT_DIR$/ui_atoms" />
           </set>

@@ -65,4 +65,5 @@ dependencies {
 
     api(project(":core"))
     implementation(project(":ui_atoms"))
+    implementation(project(":network_api"))
 }

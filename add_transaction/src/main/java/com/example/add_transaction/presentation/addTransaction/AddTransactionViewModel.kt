@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.add_transaction.data.repository.AddTransactionRepository
 import com.example.add_transaction.presentation.models.Category
+import com.example.add_transaction.presentation.models.Currency
 import com.example.add_transaction.presentation.models.TransactionType
 import com.example.add_transaction.presentation.models.Transaction
 import kotlinx.coroutines.CoroutineScope
@@ -23,6 +24,9 @@ class AddTransactionViewModel(
     private val _categoryName = MutableLiveData<String>()
     val categoryName: LiveData<String> = _categoryName
 
+    private val _currencyName = MutableLiveData<String>()
+    val currencyName: LiveData<String> = _currencyName
+
     private val transaction = MutableStateFlow(createDefaultTransaction())
     private val scope = CoroutineScope(Dispatchers.IO)
     private var transactionType = TransactionType.EXPENSES
@@ -30,6 +34,11 @@ class AddTransactionViewModel(
     fun updateCategoryId(category: Category) {
         transaction.update { it.copy(categoryId = category.categoryId) }
         _categoryName.value = category.name
+    }
+
+    fun updateCurrency(currency: Currency) {
+        transaction.update { it.copy(currency = currency.title) }
+        _currencyName.value = currency.title
     }
 
     fun updateDate(date: Date) {
@@ -42,10 +51,9 @@ class AddTransactionViewModel(
 
     fun createTransaction(
         amount: Double,
-        currency: String,
         comment: String
     ) {
-        transaction.update { it.copy(amount = amount, currency = currency, comment = comment) }
+        transaction.update { it.copy(amount = amount, comment = comment) }
 
         scope.launch {
             addTransactionRepository.createTransaction(transactionType, transaction.value)

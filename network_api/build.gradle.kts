@@ -1,12 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
-    id("com.google.devtools.ksp")
 }
 
 android {
-    namespace = "com.example.core_api"
+    namespace = "com.example.network_api"
     compileSdk = 34
 
     defaultConfig {
@@ -43,14 +41,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Dagger
-    implementation(libs.dagger)
-    kapt (libs.dagger.compiler)
-
-    // Room
-    implementation(libs.androidx.room.runtime)
-    kapt(libs.androidx.room.compiler)
-
     // Retrofit
     implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
 }
