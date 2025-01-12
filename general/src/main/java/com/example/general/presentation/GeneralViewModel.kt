@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.general.data.repository.GeneralRepository
 import com.example.general.presentation.models.Transaction
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import javax.inject.Inject
@@ -15,8 +14,6 @@ import javax.inject.Inject
 class GeneralViewModel(
     private val repository: GeneralRepository
 ): ViewModel() {
-
-    private val scope = CoroutineScope(Dispatchers.IO)
 
     private val _expensesTotalByPeriods = MutableLiveData<List<Double>>()
     val expensesTotalByPeriods: LiveData<List<Double>> = _expensesTotalByPeriods
@@ -30,7 +27,7 @@ class GeneralViewModel(
     }
 
     private fun getExpenses() {
-        scope.launch {
+        viewModelScope.launch {
             repository.getExpenses().collect { transactions ->
                 val today = calculateSumForDay(transactions)
                 val week = calculateSumForWeek(transactions)
@@ -43,7 +40,7 @@ class GeneralViewModel(
     }
 
     private fun getIncomes() {
-        scope.launch {
+        viewModelScope.launch {
             repository.getIncomes().collect { transactions ->
                 _incomeMonthTotal.postValue(
                     listOf(

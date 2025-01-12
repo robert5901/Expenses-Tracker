@@ -11,8 +11,6 @@ import com.example.transactions.presentation.models.Transaction
 import com.example.transactions.presentation.models.TransactionCategory
 import com.example.transactions.presentation.models.TransactionType
 import com.example.transactions.presentation.transactions.views.TransactionPeriodType
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -26,7 +24,6 @@ class TransactionListViewModel(
     private val transactionsRepository: TransactionsRepository
 ) : ViewModel() {
 
-    private val scope = CoroutineScope(Dispatchers.IO)
     private var transactionType = TransactionType.EXPENSES
 
     private val _categoryList = MutableStateFlow<List<Category>>(emptyList())
@@ -69,14 +66,14 @@ class TransactionListViewModel(
     fun getTransactionType() = transactionType
 
     fun loadTransactionCategoryList(transactionPeriodType: TransactionPeriodType) {
-        scope.launch {
+        viewModelScope.launch {
             transactionsRepository.getCategoryList(transactionType)
                 .collect { categories ->
                     _categoryList.value = categories
                 }
         }
 
-        scope.launch {
+        viewModelScope.launch {
             transactionsRepository.getTransactionList(transactionType)
                 .collect { transactions ->
                     _transactionList.value = transactions

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface ExpensesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(expenseEntity: ExpenseEntity)
+    suspend fun insert(expenseEntity: ExpenseEntity)
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getExpenseList(): Flow<List<ExpenseEntity>>

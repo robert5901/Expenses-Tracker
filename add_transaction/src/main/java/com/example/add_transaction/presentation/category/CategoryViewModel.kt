@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.add_transaction.data.repository.CategoryRepository
 import com.example.add_transaction.presentation.models.Category
 import com.example.add_transaction.presentation.models.TransactionType
@@ -29,7 +30,7 @@ class CategoryViewModel(
     }
 
     fun loadCategoryList(transactionType: TransactionType) {
-        scope.launch {
+        viewModelScope.launch {
             categoryRepository.loadCategoryList(transactionType)
                 .collect { categories ->
                     _categoryList.value = categories

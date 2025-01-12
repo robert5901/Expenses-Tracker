@@ -13,7 +13,7 @@ class AddTransactionRepository @Inject constructor(
     private val transactionMapper: TransactionMapper
 ) {
 
-    fun createTransaction(transactionType: TransactionType, transaction: Transaction) {
+    suspend fun createTransaction(transactionType: TransactionType, transaction: Transaction) {
         when (transactionType) {
             TransactionType.EXPENSES -> {
                 expenseDao.insert(transactionMapper.mapTransactionToExpenseEntity(transaction))
