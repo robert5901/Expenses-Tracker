@@ -6,65 +6,55 @@ import com.example.core_api.entity.IncomeCategoryEntity
 import com.example.core_api.entity.IncomeEntity
 import com.example.transactions.presentation.models.Category
 import com.example.transactions.presentation.models.Transaction
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class TransactionsMapper @Inject constructor() {
 
     fun mapExpenseCategoryEntityListToCategoryList(
-        expenseCategoryList: Flow<List<ExpenseCategoryEntity>>
-    ): Flow<List<Category>> =
-        expenseCategoryList.map { entityList ->
-            entityList.map { expenseCategoryEntity ->
-                Category(
-                    categoryId = expenseCategoryEntity.categoryId,
-                    name = expenseCategoryEntity.name
-                )
-            }
+        expenseCategoryList: List<ExpenseCategoryEntity>
+    ): List<Category> =
+        expenseCategoryList.map {
+            Category(
+                categoryId = it.categoryId,
+                name = it.name
+            )
         }
 
     fun mapIncomeCategoryEntityListToCategoryList(
-        incomeCategoryList: Flow<List<IncomeCategoryEntity>>
-    ): Flow<List<Category>> =
-        incomeCategoryList.map { entityList ->
-            entityList.map { incomeCategoryEntity ->
-                Category(
-                    categoryId = incomeCategoryEntity.categoryId,
-                    name = incomeCategoryEntity.name
-                )
-            }
+        incomeCategoryList: List<IncomeCategoryEntity>
+    ): List<Category> =
+        incomeCategoryList.map {
+            Category(
+                categoryId = it.categoryId,
+                name = it.name
+            )
         }
 
     fun mapExpenseListToTransactionList(
-        expenseList: Flow<List<ExpenseEntity>>
-    ): Flow<List<Transaction>> =
-        expenseList.map { expenses ->
-            expenses.map { expense ->
-                Transaction(
-                    date = expense.date,
-                    time = expense.time,
-                    categoryId = expense.categoryId,
-                    amount = expense.amount,
-                    currency = expense.currency,
-                    comment = expense.comment
-                )
-            }
+        expenseList: List<ExpenseEntity>
+    ): List<Transaction> =
+        expenseList.map { expense ->
+            Transaction(
+                date = expense.date,
+                time = expense.time,
+                categoryId = expense.categoryId,
+                amount = expense.amount,
+                currency = expense.currency,
+                comment = expense.comment
+            )
         }
 
     fun mapIncomeListToTransactionList(
-        incomeList: Flow<List<IncomeEntity>>
-    ): Flow<List<Transaction>> =
-        incomeList.map { incomes ->
-            incomes.map { income ->
-                Transaction(
-                    date = income.date,
-                    time = income.time,
-                    categoryId = income.categoryId,
-                    amount = income.amount,
-                    currency = income.currency,
-                    comment = income.comment
-                )
-            }
+        incomeList: List<IncomeEntity>
+    ): List<Transaction> =
+        incomeList.map { income ->
+            Transaction(
+                date = income.date,
+                time = income.time,
+                categoryId = income.categoryId,
+                amount = income.amount,
+                currency = income.currency,
+                comment = income.comment
+            )
         }
 }

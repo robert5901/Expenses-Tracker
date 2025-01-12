@@ -9,6 +9,7 @@ import com.example.transactions.presentation.models.Category
 import com.example.transactions.presentation.models.Transaction
 import com.example.transactions.presentation.models.TransactionType
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class TransactionsRepository @Inject constructor(
@@ -22,17 +23,17 @@ class TransactionsRepository @Inject constructor(
     fun getCategoryList(transactionType: TransactionType): Flow<List<Category>> {
         when (transactionType) {
             TransactionType.EXPENSES -> {
-                val expenseCategoryEntityList = expenseCategoryDao.getExpenseCategoryList()
-                return transactionsMapper.mapExpenseCategoryEntityListToCategoryList(
-                    expenseCategoryEntityList
-                )
+                val expenseCategoryEntityListFlow = expenseCategoryDao.getExpenseCategoryList()
+                return expenseCategoryEntityListFlow.map {
+                    transactionsMapper.mapExpenseCategoryEntityListToCategoryList(it)
+                }
             }
 
             TransactionType.INCOMES -> {
-                val incomeCategoryEntityList = incomeCategoryDao.getIncomeCategoryList()
-                return transactionsMapper.mapIncomeCategoryEntityListToCategoryList(
-                    incomeCategoryEntityList
-                )
+                val incomeCategoryEntityListFlow = incomeCategoryDao.getIncomeCategoryList()
+                return incomeCategoryEntityListFlow.map {
+                    transactionsMapper.mapIncomeCategoryEntityListToCategoryList(it)
+                }
             }
         }
     }
@@ -40,13 +41,17 @@ class TransactionsRepository @Inject constructor(
     fun getTransactionList(transactionType: TransactionType): Flow<List<Transaction>> {
         when (transactionType) {
             TransactionType.EXPENSES -> {
-                val expenseList = expenseDao.getExpenseList()
-                return transactionsMapper.mapExpenseListToTransactionList(expenseList)
+                val expenseListFlow = expenseDao.getExpenseList()
+                return expenseListFlow.map {
+                    transactionsMapper.mapExpenseListToTransactionList(it)
+                }
             }
 
             TransactionType.INCOMES -> {
-                val incomeList = incomeDao.getIncomeList()
-                return transactionsMapper.mapIncomeListToTransactionList(incomeList)
+                val incomeListFlow = incomeDao.getIncomeList()
+                return incomeListFlow.map {
+                    transactionsMapper.mapIncomeListToTransactionList(it)
+                }
             }
         }
     }

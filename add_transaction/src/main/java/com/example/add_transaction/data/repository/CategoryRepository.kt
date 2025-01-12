@@ -8,6 +8,7 @@ import com.example.core_api.database.dao.IncomeCategoryDao
 import com.example.core_api.entity.ExpenseCategoryEntity
 import com.example.core_api.entity.IncomeCategoryEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class CategoryRepository @Inject constructor(
@@ -39,13 +40,17 @@ class CategoryRepository @Inject constructor(
     fun loadCategoryList(transactionType: TransactionType): Flow<List<Category>> {
         when (transactionType) {
             TransactionType.EXPENSES -> {
-                val expenseCategoryListEntity = expenseCategoryDao.getExpenseCategoryList()
-                return categoryMapper.mapExpenseCategoryEntityToCategory(expenseCategoryListEntity)
+                val expenseCategoryListEntityFlow = expenseCategoryDao.getExpenseCategoryList()
+                return expenseCategoryListEntityFlow.map {
+                    categoryMapper.mapExpenseCategoryEntityToCategory(it)
+                }
             }
 
             TransactionType.INCOMES -> {
-                val incomeCategoryListEntity = incomeCategoryDao.getIncomeCategoryList()
-                return categoryMapper.mapIncomeCategoryEntityToCategory(incomeCategoryListEntity)
+                val incomeCategoryListEntityFlow = incomeCategoryDao.getIncomeCategoryList()
+                return incomeCategoryListEntityFlow.map {
+                    categoryMapper.mapIncomeCategoryEntityToCategory(it)
+                }
             }
         }
     }
