@@ -23,19 +23,6 @@ class MainActivity : AppCompatActivity() {
             core_R.id.main_container,
             supportFragmentManager
         )
-
-//        val generalFragment = GeneralFragment()
-//        val addExpenseFragment = AddExpenseFragment()
-//        val categoryFragment = CategoryFragment()
-//        val expensesFragment = ExpensesFragment()
-//        val categoryTransactionsFragment = CategoryTransactionsFragment()
-//        val incomesFragment = IncomesFragment()
-
-//        supportFragmentManager.beginTransaction().add(
-//            R.id.main_container,
-//            incomesFragment,
-//            ""
-//        ).commit()
     }
 }
 

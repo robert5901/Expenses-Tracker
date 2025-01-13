@@ -3,6 +3,7 @@ package com.example.core_api.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.core_api.database.dao.ExpensesDao
 import java.util.Date
@@ -16,7 +17,8 @@ import java.util.Date
             childColumns = arrayOf("categoryId"),
             onDelete = ForeignKey.CASCADE
         )
-    ]
+    ],
+    indices = [Index(value = ["categoryId"])]
 )
 data class ExpenseEntity(
     @PrimaryKey(autoGenerate = true)
