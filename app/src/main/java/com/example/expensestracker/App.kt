@@ -1,4 +1,4 @@
-package com.example.expensestracker.app
+package com.example.expensestracker
 
 import android.app.Application
 import com.example.core_api.mediators.ExpensesTrackerApp
