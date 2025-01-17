@@ -1,61 +1,61 @@
 package com.example.add_transaction.presentation.category
 
-import androidx.fragment.app.testing.launchFragmentInContainer
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withParent
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.add_transaction.R
-import com.example.add_transaction.presentation.addTransaction.AddTransactionFragment
-import com.example.add_transaction.presentation.addTransaction.AddTransactionViewModel
-import com.example.add_transaction.presentation.models.TransactionType
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
-import org.junit.Before
+import com.example.general.R
+import com.example.main.MainActivity
+import org.hamcrest.Matchers.allOf
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import com.example.core_api.R as core_R
+import com.example.transactions.R as transactionsR
 
 @RunWith(AndroidJUnit4::class)
 class CategoryFragmentTest {
 
-    private lateinit var viewModel: AddTransactionViewModel
+    @get:Rule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    @Before
-    fun setUp() {
-        viewModel = mockk()
-        every { viewModel.getTransactionType() } returns TransactionType.EXPENSES
+    @Test
+    fun testGeneralFragmentIsDisplayed() {
+        // Проверка отображаения main_container
+        onView(withId(core_R.id.main_container)).check(matches(isDisplayed()))
+
+        // Проверка отображаения GeneralFragment
+        onView(withId(R.id.expenses)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun testNavigationToCategoryFragment() {
-        val scenario = launchFragmentInContainer<AddTransactionFragment>()
-        val navController = mockk<NavController>(relaxed = true)
+    fun testTransactionsFragmentIsDisplayed() {
+        // Нажатие на кнопку expenses_button
+        onView(withId(R.id.expenses_button)).perform(click())
 
-        scenario.onFragment { fragment ->
-            Navigation.setViewNavController(fragment.requireView(), navController)
-        }
+        // Проверка отображаения TransactionsFragment
+        onView(
+            allOf(
+                withId(transactionsR.id.transaction_list_main_container),
+                withParent(withId(core_R.id.main_container))
+            )
+        ).check(matches(isDisplayed()))
 
-        onView(withId(R.id.category)).perform(click())
+        // Проверка отображаения RecyclerView
+        onView(withId(transactionsR.id.recyclerView)).check(matches(isDisplayed()))
 
-        // TODO fix that
-//        verify { navController.navigate(AddTransactionFragmentDirections.toCategoryFragment()) }
-    }
-
-    @Test
-    fun testCategoryFragmentNavigation() {
-        val scenario = launchFragmentInContainer<CategoryFragment>()
-
-        val recyclerView = onView(withId(R.id.recyclerView))
-
-        recyclerView.check(matches(isDisplayed()))
-
-        onView(withId(R.id.back)).perform(click())
-
-        onView(withId(R.id.add_transaction_main_container)).check(matches(isDisplayed()))
+        // Проверяем, что в RecyclerView есть элементы
+        onView(withId(transactionsR.id.recyclerView)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0)
+        )
+        onView(withId(transactionsR.id.recyclerView)).check(matches(hasDescendant(withText("test"))))
     }
 }
